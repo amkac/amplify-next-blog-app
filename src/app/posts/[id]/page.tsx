@@ -9,6 +9,7 @@ const Posts = async ({ params }: { params: { id: string } }) => {
   if (!params.id) return null;
 
   const isSignedIn = await isAuthenticated();
+
   const { data: post } = await cookieBasedClient.models.Post.get(
     {
       id: params.id,
@@ -33,14 +34,14 @@ const Posts = async ({ params }: { params: { id: string } }) => {
     <div className="flex flex-col items-center p-4 gap-4">
       <h1 className="text-2xl font-bold">Post Information:</h1>
       <div className="border rounded w-1/2 m-auto bg-gray-200 p-4 ">
-        <h2>Title: {post.title}</h2>
+        <h2>Title: {post?.title}</h2>
       </div>
 
       {isSignedIn ? (
         <AddComment
           addComment={addComment}
           paramsId={params.id}
-          post={post as Schema["Post"]}
+          post={post}
         />
       ) : null}
 

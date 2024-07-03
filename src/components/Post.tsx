@@ -8,10 +8,11 @@ const Post = ({
   onDelete,
   isSignedIn,
 }: {
-  post: Pick<Schema["Post"], "title" | "id">;
+  post: any;
   onDelete: (id: string) => void;
   isSignedIn: boolean;
 }) => {
+
   const router = useRouter();
   const onDetail = () => {
     router.push(`posts/${post.id}`);
