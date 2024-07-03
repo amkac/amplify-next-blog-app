@@ -20,7 +20,7 @@ const Posts = async ({ params }: { params: { id: string } }) => {
   );
   const { data: comments } = await cookieBasedClient.models.Comment.list({
     authMode: "apiKey",
-    select ionSet: ["content", "post.id", "id"],
+    selectionSet: ["content", "post.id", "id"],
     filter: {
         postId: {
             eq: params.id
